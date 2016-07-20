@@ -21,6 +21,8 @@ export default function subscribe(node, env, scope, stream) {
       node.shouldReceiveAttrs = true;
     }
 
-    node.ownerNode.emberView.scheduleRevalidate(node, labelFor(stream));
+    if (node.ownerNode) {
+      node.ownerNode.emberView.scheduleRevalidate(node, labelFor(stream));
+    }
   }));
 }
